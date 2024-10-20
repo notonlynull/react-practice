@@ -1,3 +1,13 @@
+# React Practice Projects
+
+1. Accordion Component (Working on)
+
+NEXT
+2. Infinite scrolling of Pokemon (https://reactpractice.dev/exercise/build-an-infinite-scrolling-list-of-pokemons/)
+3. Show top 10 article from hacker news (https://reactpractice.dev/exercise/show-top-10-articles-from-hacker-news/)
+
+
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
