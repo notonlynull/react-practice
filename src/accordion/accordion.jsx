@@ -1,28 +1,23 @@
-const dataAccordion = [
-  {
-    title: 'What is Github and how does it work?',
-    content:
-      'GitHub is the home for all developers—a platform where you can share code, contribute to open source projects, or even automate your workflow with tools like GitHub Actions and Packages. If you’re just getting started with GitHub, you may know us best as a place for version control and collaboration.',
-  },
-  {
-    title: "How do I see GitHub's availability?",
-    content: 'Check our real-time status report',
-  },
-  {
-    title: 'Why is GitHub so popular?',
-    content:
-      'GitHub is built by developers for developers, and we’re proud to be home to the world’s largest open source community. With 50 million developers and millions more open source projects, GitHub has become the go-to place to collaborate and build software together.',
-  },
-];
-
-export default function Accordion() {
-  const [a, setA] = useState(true);
-  const list = dataAccordion.map((i) => (
-    <li>
-      {i.title} <button onClick={setA(!a)}>ABC</button>
-      {a == true && <div>{i.content}</div>}
-    </li>
-  ));
-
-  return <ul>{list}</ul>;
+import { useState } from "react";
+import './accordion.css'
+export default function Accordion({title, content}) {
+  const [isOpen, setIsOpen] = useState(false);
+  const toggleAccordion = () => {
+    setIsOpen(!isOpen);
+  };
+  return (
+    <div className="accordion-item">
+      <div className="accordion-header" onClick={toggleAccordion}>
+        <h2>{title}</h2>
+        {/* Mostra un simbolo per indicare apertura o chiusura */}
+        <span>{isOpen ? '-' : '+'}</span>
+      </div>
+      {/* Mostra il contenuto solo se isOpen è true */}
+      {isOpen && (
+        <div className="accordion-content">
+          <p>{content}</p>
+        </div>
+      )}
+    </div>
+  )
 }
