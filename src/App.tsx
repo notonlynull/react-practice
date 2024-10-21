@@ -1,27 +1,45 @@
-import Accordion from './accordion/accordion.jsx';
+import AccordionsView from './accordion/AccordionView';
 import './App.css';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+
+
+const NotFound = () => {
+  return (
+    <div>
+      <h1>404 - Not Found</h1>
+      <p>La pagina che stai cercando non esiste.</p>
+    </div>
+  );
+};
 
 function App() {
-  const dataAccordion = [
-    {
-      title: 'What is Github and how does it work?',
-      content:
-        'GitHub is the home for all developers—a platform where you can share code, contribute to open source projects, or even automate your workflow with tools like GitHub Actions and Packages. If you’re just getting started with GitHub, you may know us best as a place for version control and collaboration.',
-    },
-    {
-      title: "How do I see GitHub's availability?",
-      content: 'Check our real-time status report',
-    },
-    {
-      title: 'Why is GitHub so popular?',
-      content:
-        'GitHub is built by developers for developers, and we’re proud to be home to the world’s largest open source community. With 50 million developers and millions more open source projects, GitHub has become the go-to place to collaborate and build software together.',
-    },
-  ];
   return <>
-  {dataAccordion.map((el, index) => (
-        <Accordion key={index} title={el.title} content={el.content} />
-      ))}
+
+
+<Router>
+<div>
+  {/* Menu di navigazione */}
+  <nav>
+    <ul>
+      <li>
+      <Link to="/">Home</Link>
+      </li>
+      <li>
+
+      <Link to="/accordion">Accordion</Link>
+
+      </li>
+    </ul>
+  </nav>
+
+  {/* Definizione delle rotte */}
+  <Routes>
+    <Route path="/"/>
+    <Route path="/accordion" element={<AccordionsView />} />
+    <Route path="*" element={<NotFound />} />
+  </Routes>
+</div>
+</Router>
   </>;
 }
 
